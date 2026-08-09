@@ -3,6 +3,29 @@ function calcolaAcqua(persone, giorni) {
     return persone * giorni * litriPerPersonaAlGiorno;
 }
 
+function validaTemperatura(temperatura) {
+    if (temperatura < 35.0) {
+        return "IPOTERMIA";
+    } else if (temperatura <= 37.5) {
+        return "NORMALE";
+    } else {
+        return "FEBBRE";
+    }
+}
+
+function calcolaKitMedici(persone, livelloRischio) {
+    let personePerKit;
+
+    if (livelloRischio === "alto") {
+        personePerKit = 10;
+    } else if (livelloRischio === "medio") {
+        personePerKit = 25;
+    } else {
+        personePerKit = 50;
+    }
+    return Math.ceil(persone / personePerKit);
+}
+
 function gestisciCalcoloAcqua() {
     const persone = Number(document.getElementById('numPersone').value);
     const giorni = Number(document.getElementById('numGiorni').value);
@@ -26,6 +49,20 @@ function gestisciTriage() {
     } else {
         const stato = validaTemperatura(temp);
         divRisultato.innerText = `Stato paziente: ${stato}`;
+    }
+    divRisultato.style.display = 'block';
+}
+
+function gestisciCalcoloKit() {
+    const persone = Number(document.getElementById('numPersoneKit').value);
+    const livelloRischio = document.getElementById('livelloRischio').value;
+    const divRisultato = document.getElementById('risultatoKit');
+
+    if (persone <= 0) {
+        divRisultato.innerText = "Inserisci un numero di persone valido e maggiore di zero";
+    } else {
+        const totaleKit = calcolaKitMedici(persone, livelloRischio);
+        divRisultato.innerText = `Kit medici di pronto soccorso necessari: ${totaleKit}`;
     }
     divRisultato.style.display = 'block';
 }

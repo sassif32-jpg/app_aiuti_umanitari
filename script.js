@@ -13,7 +13,7 @@ function gestisciCalcoloAccqua() {
         const totaleLitri = calcolaAcqua(persone, giorni);
         divRisultato.innerText = `Fabbisogno totale: ${totaleLitri} Litri d'acqua.`;
     }
-    divRisultato.Risultato.style.display = 'block';
+    divRisultato.style.display = 'block';
 }
 
 function gestisciTriage() {

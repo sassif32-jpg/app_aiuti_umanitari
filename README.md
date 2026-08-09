@@ -21,3 +21,11 @@ Un'applicazione web leggera progettata per supportare la gestione e la risposta 
 1. Clona il repository o scarica i file:
    ```bash
    git clone [https://github.com/TUO-UTENTE/humanitarian-aid-app.git](https://github.com/TUO-UTENTE/humanitarian-aid-app.git)
+
+## 📂 Struttura del Progetto
+
+App-Aiuti-Umanitari/
+├── index.html   # Struttura dell'interfaccia
+├── style.css    # Stili visivi
+├── script.js    # Logica in JavaScript
+└── README.md    # Documentazione

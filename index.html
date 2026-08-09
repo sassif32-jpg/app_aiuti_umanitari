@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Humanitarian Emergency Helper</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>Humanitarian Aid Assistant</h1>
+
+    <!-- modulo 1: calcolo fabbisogno acqua -->
+    <div class="card">
+        <h2>1. Calcolo Fabbisogno Acqua</h2>
+        <label for="numPersone">Numero di persone:</label>
+        <input type="number" id="numPersone" placeholder="Es. 50">
+
+        <label for="numGiorni">Numero di giorni:</label>
+        <input type="number" id="numGiorni" placeholder="Es. 3">
+
+        <button onclick="gestisciCalcoloAcqua()">Calcola Acqua Necessaria</button>
+        <div id="risultatoAcqua" class="result" style="display:none;"></div>
+    </div>
+
+    <!-- modulo 2: Triage sanitario (temperatura)-->
+    <div class="card">
+        <h2>2. Triage Temperatura Paziente</h2>
+        <label for="tempPaziente">Temperatura (°C):</label>
+        <input type="number" step="0.1" id="tempPaziente" placeholder="Es. 38.2">
+
+        <button onclick="gestisciTriage()">ValutaCondizione</button>
+        <div id="risultatoTriage" class="result" style="display:none;"></div>
+    </div>
+
+    <!-- collegamento al file JavaScript esterno -->
+    <script src="script.js"></script>
+</body>
+</html>

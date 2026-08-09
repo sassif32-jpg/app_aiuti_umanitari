@@ -1,3 +1,7 @@
+function calcolaAcqua(persone, giorni) {
+    const litriPerPersonaAlGiorno = 3;
+    return persone * giorni * litriPerPersonaAlGiorno;
+
 function gestisciCalcoloAccqua() {
     const persone = Number(document.getElementById('numPersone').value);
     const giorni = Number(document.getElementById('numGiorni').value);

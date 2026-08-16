@@ -26,6 +26,11 @@ App-Aiuti-Umanitari/
      Rischio Moderato: 1 Kit ogni 25 persone
      Rischio Elevato / Zona di Conflitto: 1 Kit ogni 10 persone
  (Arrotondamento sempre per eccesso per garantire la copertura completa)
+
+4. 🥫 **Calcolo Razioni Cibo:** Determina il numero di razioni alimentari giornaliere necessarie in base alla popolazione assistita e alla durata dell'intervento.
+
+   * **Formula:** `Totale Razioni = Persone x Giorni x 2`
+   * **Margine di Scorta:** Se la permanenza supera i 7 giorni, viene applicata una scorta di sicurezza del **+15%** sul totale complessivo.
    
 
 ## 🛠️ Tecnologie Utilizzate

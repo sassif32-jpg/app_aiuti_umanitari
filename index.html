@@ -33,6 +33,21 @@
         <div id="risultatoTriage" class="result" style="display:none;"></div>
     </div>
 
+    <!--modulo 3: RAZIONI CIBO-->
+    <div class="card">
+        <h2>3. Calcolo Razioni Cibo</h2>
+        <label for="numPersoneCibo">Numero di persone:</label>
+        <input type="number" id="numPersoneCibo" placeholder="Es. 50">
+
+        <label for="numGiorniCibo">Numero di giorni:</label>
+        <input type="number" id="numGiorniCibo" placeholder="Es. 10">
+
+        <button onclick="gestisciCalcoloCibo()">Calcola Razioni</button>
+        <div id="risultatoCibo" class="result" style="display: none;"></div>
+    </div>
+
+     
+
     <!-- collegamento al file JavaScript esterno -->
     <script src="script.js"></script>
 </body>

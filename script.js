@@ -1,6 +1,12 @@
 function calcolaAcqua(persone, giorni) {
     const litriPerPersonaAlGiorno = 3;
     return persone * giorni * litriPerPersonaAlGiorno;
+
+    // se i giorni sono più di 14, aggiungiamo il margine del 10%
+    if (giorni > 14) {
+        totale = totale * 1.10; // moltiplico per 1.10 che è uguale ad aggiungere il 10%
+    }
+    return totale;
 }
 
 function validaTemperatura(temperatura) {
@@ -26,6 +32,15 @@ function calcolaKitMedici(persone, livelloRischio) {
     return Math.ceil(persone / personePerKit);
 }
 
+function calcolaRazioni(numPersone, numGiorni) {
+    let totale = numPersone * numGiorni * 2;
+
+    if (numGiorni > 7) {
+        totale = totale * 1.15;
+    }
+    return totale;
+}
+
 function gestisciCalcoloAcqua() {
     const persone = Number(document.getElementById('numPersone').value);
     const giorni = Number(document.getElementById('numGiorni').value);
@@ -33,9 +48,10 @@ function gestisciCalcoloAcqua() {
 
     if (persone <= 0 || giorni <= 0) {
         divRisultato.innerText = "Inserisci valori validi maggiori di zero.";
-    } else {
+    } 
+    else {
         const totaleLitri = calcolaAcqua(persone, giorni);
-        divRisultato.innerText = `Fabbisogno totale: ${totaleLitri} Litri d'acqua.`;
+        divRisultato.innerText = `Fabbisogno totale: ${Math.round(totaleLitri)} Litri d'acqua.`;
     }
     divRisultato.style.display = 'block';
 }
@@ -64,5 +80,24 @@ function gestisciCalcoloKit() {
         const totaleKit = calcolaKitMedici(persone, livelloRischio);
         divRisultato.innerText = `Kit medici di pronto soccorso necessari: ${totaleKit}`;
     }
+    divRisultato.style.display = 'block';
+}
+
+function gestisciCalcoloCibo() {
+    const personePresenti = Number(document.getElementById('numPersoneCibo').value);
+    const giorniPermanenza = Number(document.getElementById('numGiorniCibo').value);
+    const divRisultato = document.getElementById('risultatoCibo');
+
+    if (personePresenti <= 0 || giorniPermanenza <= 0) {
+        divRisultato.innerText = "Inserisci numeri validi maggiori di zero.";
+    } else {
+    // chiamo la Business Logic per fare il calcolo
+    const fabbisognoTotale = calcolaRazioni(personePresenti, giorniPermanenza);
+
+    // inserisco il testo del risultato nel div
+    divRisultato.innerText = `Razioni necessarie: ${Math.round(fabbisognoTotale)}`;
+    }
+
+    // rendo visibile il div nell'intrfaccia (mostra il riquadro)
     divRisultato.style.display = 'block';
 }

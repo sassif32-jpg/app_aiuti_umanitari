@@ -150,7 +150,7 @@ function gestisciCalcoloRifugi() {
                 ]
             },
             center: [34.3500, 31.4000], // longitudine e latitudine
-            zoom: 11 // zoom più ravvicinato
+            zoom: 9 // zoom più ravvicinato
         });
 
         //2. zone coperte dagli aiuti

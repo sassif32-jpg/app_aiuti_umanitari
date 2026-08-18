@@ -124,13 +124,12 @@ function gestisciCalcoloRifugi() {
 
     function inizializzaMappa() {
         //1. crea la mappa e la centra su coordinate specifiche (es. latitudine, longitudine, zoom)
-        const map = L.map('map').setView([43.7696, 11.2558], 6); //esempio di coordinate
-
-        //2. carica i tasselli visivi da OpenStreetMap
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 19,
-            attribution: '© OpenStreetMap contributors'
-        }).addTo(map);
+        const map = new maplibregl.Map({
+            container: 'map',
+            style: 'https://demotiles.maplibre.org/style.json', //stile demo open-source
+            center: [11.2558, 43.7696], // longitudine e latitudine
+            zoom: 6
+        });
 
         //3. esempio di dati in tempo reale (zone coperte dagli aiuti)
         const zoneAiuto = [
@@ -138,12 +137,12 @@ function gestisciCalcoloRifugi() {
             {nome: "Punto Medico Bravo", lat: 41.9028, lng: 12.4964, stato: "Operativo: Triage e Kit Medici"}
         ];
 
-        //4. aggiunge i punti sulla mappa tramite un ciclo
-        zoneAiuti.forEach(zona => {
-            L.marker([zona.lat, zona.lng])
-                .addTo(map)
-                .bindPopup(`<b>${zona.nome}</b><br>Stato: ${zona.stato}`);
-        });
+        zoneAiuto.forEach(zona => {
+            new maplibregl.Marker()
+            .setLngLat([zona.lng, zona.lat]) // MapLibre vuole prima Lng e poi Lat
+            .setPopup(new maplibregl.Popup().setHTML("<b>${zona.nome}</b><br>Stato: ${zona.stato}"))
+            .addTo(map);
+        })
     }
 
     // inizializza la mappa quando la pagina ha finito di caricare

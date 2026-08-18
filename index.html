@@ -46,7 +46,15 @@
         <div id="risultatoCibo" class="result" style="display: none;"></div>
     </div>
 
-     
+     <!--modulo 4: calcolo tende/rifugi necessari-->
+     <div class="card">
+        <h2>4. Calcolo Tende e rifugi</h2>
+        <label for="numSfollati">Numero di sfollati/persone da ospitare:</label>
+        <input type="number" id="numSfollati" placeholder="Es. 120">
+
+        <button onclick="gestisciCalcoloRifugi()">Calcola Rifugi</button>
+        <div id="risultatoRifugi" class="result" style="display: none;"></div>
+     </div>
 
     <!-- collegamento al file JavaScript esterno -->
     <script src="script.js"></script>

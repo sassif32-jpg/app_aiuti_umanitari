@@ -31,6 +31,10 @@ App-Aiuti-Umanitari/
 
    * **Formula:** `Totale Razioni = Persone x Giorni x 2`
    * **Margine di Scorta:** Se la permanenza supera i 7 giorni, viene applicata una scorta di sicurezza del **+15%** sul totale complessivo.
+
+5. ⛺ **Calcolo Tende e Rifugi:** Determina il numero di tende da campo o strutture modulari necessarie per garantire un riparo temporaneo alla popolazione sfollata.
+
+   * **Formula:** `Tende necessarie = Math.ceil(Persone / 5)` (Capienza standard: 5 persone per tenda, con arrotondamento sempre per eccesso per garantire coperture sufficienti).
    
 
 ## 🛠️ Tecnologie Utilizzate

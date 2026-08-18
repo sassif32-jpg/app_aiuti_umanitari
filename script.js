@@ -41,6 +41,11 @@ function calcolaRazioni(numPersone, numGiorni) {
     return totale;
 }
 
+function calcolaRifugi(numPersone) {
+    const CAPIENZA_TENDA = 5; // standard 5 persone per tenda
+    return Math.ceil(numPersone / CAPIENZA_TENDA);
+}
+
 function gestisciCalcoloAcqua() {
     const persone = Number(document.getElementById('numPersone').value);
     const giorni = Number(document.getElementById('numGiorni').value);
@@ -101,3 +106,17 @@ function gestisciCalcoloCibo() {
     // rendo visibile il div nell'intrfaccia (mostra il riquadro)
     divRisultato.style.display = 'block';
 }
+
+function gestisciCalcoloRifugi() {
+    const sfollati = Number(document.getElementById('numSfollati').value);
+    const divRisultato = document.getElementById('risultatoRifugi');
+
+    if (sfollati <=0) {
+        divRisultato.innerText = `Inserisci numero di persone valido o maggiore di zero.`;
+    } else {
+        const tendeNecessarie = calcolaRifugi(sfollati)
+        divRisultato.innerText = `Tende/Rifugi necessari: ${tendeNecessarie}`;
+    }
+    divRisultato.style.display = 'block';
+    }
+

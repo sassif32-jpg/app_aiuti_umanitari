@@ -103,7 +103,7 @@ function gestisciCalcoloCibo() {
     divRisultato.innerText = `Razioni necessarie: ${Math.round(fabbisognoTotale)}`;
     }
 
-    // rendo visibile il div nell'intrfaccia (mostra il riquadro)
+    // rendo visibile il div nell'interfaccia (mostra il riquadro)
     divRisultato.style.display = 'block';
 }
 
@@ -120,7 +120,7 @@ function gestisciCalcoloRifugi() {
     divRisultato.style.display = 'block';
     }
 
-    // --LOGICA MAPPA (Leaflet.js) --
+    // --LOGICA MAPPA (MapLibre GL JS e OpenStreetMap) --
 
     function inizializzaMappa() {
         //1. crea la mappa e la centra su coordinate specifiche (es. latitudine, longitudine, zoom)

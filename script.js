@@ -126,21 +126,21 @@ function gestisciCalcoloRifugi() {
         //1. crea la mappa e la centra su coordinate specifiche (es. latitudine, longitudine, zoom)
         const map = new maplibregl.Map({
             container: 'map',
-            style: 'https://demotiles.maplibre.org/style.json', //stile demo open-source
-            center: [11.2558, 43.7696], // longitudine e latitudine
+            style: 'https://basemaps.arcgis.com/arcgis/rest/services/World_Basemap_v2/VectorTileServer/styles/arcgis-streets-relief.json',
+            center: [34.4367, 31.5017], // longitudine e latitudine
             zoom: 6
         });
 
         //3. esempio di dati in tempo reale (zone coperte dagli aiuti)
         const zoneAiuto = [
-            {nome: "Campo Base Alfa", lat: 43.7696, lng: 11.2558, stato: "Operativo - Acqua e Cibo"},
-            {nome: "Punto Medico Bravo", lat: 41.9028, lng: 12.4964, stato: "Operativo: Triage e Kit Medici"}
+            {nome: "Campo Al-Mawasi", lng: 34.2300, lat: 31.3289, stato: "Operativo - Acqua e Cibo"},
+            {nome: "Punto Medico Zeitoun", lng: 34.444, lat: 31.491, stato: "Operativo: Triage e Kit Medici"}
         ];
 
         zoneAiuto.forEach(zona => {
             new maplibregl.Marker()
             .setLngLat([zona.lng, zona.lat]) // MapLibre vuole prima Lng e poi Lat
-            .setPopup(new maplibregl.Popup().setHTML("<b>${zona.nome}</b><br>Stato: ${zona.stato}"))
+            .setPopup(new maplibregl.Popup().setHTML(`<b>${zona.nome}</b><br>Stato: ${zona.stato}`))
             .addTo(map);
         })
     }

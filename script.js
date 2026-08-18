@@ -126,17 +126,40 @@ function gestisciCalcoloRifugi() {
         //1. crea la mappa e la centra su coordinate specifiche (es. latitudine, longitudine, zoom)
         const map = new maplibregl.Map({
             container: 'map',
-            style: 'https://basemaps.arcgis.com/arcgis/rest/services/World_Basemap_v2/VectorTileServer/styles/arcgis-streets-relief.json',
-            center: [34.4367, 31.5017], // longitudine e latitudine
-            zoom: 6
+            style: {
+                version: 8,
+                sources: {
+                    'carto-tiles': {
+                        type: 'raster',
+                        tiles: [
+                            'https://a.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}@2x.png',
+                            'https://b.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}@2x.png'
+                        ],
+                        tileSize: 256,
+                        attribution: '© OpenStreetMap contributors © CARTO'
+                    }
+                },
+                layers: [
+                    {
+                        id: 'carto-tiles-layer',
+                        type: 'raster',
+                        source: 'carto-tiles',
+                        minzoom: 0,
+                        maxzoom: 19
+                    }
+                ]
+            },
+            center: [34.3500, 31.4000], // longitudine e latitudine
+            zoom: 11 // zoom più ravvicinato
         });
 
-        //3. esempio di dati in tempo reale (zone coperte dagli aiuti)
+        //2. zone coperte dagli aiuti
         const zoneAiuto = [
             {nome: "Campo Al-Mawasi", lng: 34.2300, lat: 31.3289, stato: "Operativo - Acqua e Cibo"},
-            {nome: "Punto Medico Zeitoun", lng: 34.444, lat: 31.491, stato: "Operativo: Triage e Kit Medici"}
+            {nome: "Punto Medico Zeitoun", lng: 34.4440, lat: 31.4910, stato: "Operativo: Triage e Kit Medici"}
         ];
 
+        // 3. ciclo per aggiungere i marker sulla mappa
         zoneAiuto.forEach(zona => {
             new maplibregl.Marker()
             .setLngLat([zona.lng, zona.lat]) // MapLibre vuole prima Lng e poi Lat

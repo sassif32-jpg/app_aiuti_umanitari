@@ -120,3 +120,34 @@ function gestisciCalcoloRifugi() {
     divRisultato.style.display = 'block';
     }
 
+    // --LOGICA MAPPA (Leaflet.js) --
+
+    function inizializzaMappa() {
+        //1. crea la mappa e la centra su coordinate specifiche (es. latitudine, longitudine, zoom)
+        const map = L.map('map').setView([43.7696, 11.2558], 6); //esempio di coordinate
+
+        //2. carica i tasselli visivi da OpenStreetMap
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        //3. esempio di dati in tempo reale (zone coperte dagli aiuti)
+        const zoneAiuto = [
+            {nome: "Campo Base Alfa", lat: 43.7696, lng: 11.2558, stato: "Operativo - Acqua e Cibo"},
+            {nome: "Punto Medico Bravo", lat: 41.9028, lng: 12.4964, stato: "Operativo: Triage e Kit Medici"}
+        ];
+
+        //4. aggiunge i punti sulla mappa tramite un ciclo
+        zoneAiuti.forEach(zona => {
+            L.marker([zona.lat, zona.lng])
+                .addTo(map)
+                .bindPopup(`<b>${zona.nome}</b><br>Stato: ${zona.stato}`);
+        });
+    }
+
+    // inizializza la mappa quando la pagina ha finito di caricare
+    window.onload = function() {
+        inizializzaMappa();
+    };
+

@@ -35,6 +35,8 @@ App-Aiuti-Umanitari/
 5. ⛺ **Calcolo Tende e Rifugi:** Determina il numero di tende da campo o strutture modulari necessarie per garantire un riparo temporaneo alla popolazione sfollata.
 
    * **Formula:** `Tende necessarie = Math.ceil(Persone / 5)` (Capienza standard: 5 persone per tenda, con arrotondamento sempre per eccesso per garantire coperture sufficienti).
+
+6. 🗺️ **Mappa Zone Operative:** Visualizzazione interattiva in tempo reale tramite Leaflet.js e OpenStreetMap per geolocalizzare i campi base, i punti di distribuzione delle razioni e i presidi medici sul territorio.
    
 
 ## 🛠️ Tecnologie Utilizzate

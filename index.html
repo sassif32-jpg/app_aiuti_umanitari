@@ -63,6 +63,21 @@
         <div id="risultatoRifugi" class="result" style="display: none;"></div>
      </div>
 
+     <!--modulo 5: calcolo strade percorribili-->
+     <div class="card">
+        <h1>5. Calcolo Strade Percorribili</h1>
+        <label for="nameStrade">Scegli una strada</label>
+        <select id="nameStrade">
+            <option value="">-- Seleziona una strada --</option>
+            <option value="Al-Rashid Street">Al-Rashid Street</option>
+            <option value="Omar Mukhtar Street">Omar Mukhtar Street</option>
+            <option value="Salah al-Din Road">Salah al-Din Road</option>
+        </select>
+
+        <button onclick="gestisciCalcoloStrade()">Calcola Strade</button>
+        <div id="risultatoStrade" class="result" style="display: none;"></div>
+     </div>
+
     <!-- collegamento al file JavaScript esterno -->
     <script src="script.js"></script>
 </body>

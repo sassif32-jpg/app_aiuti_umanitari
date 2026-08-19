@@ -46,6 +46,18 @@ function calcolaRifugi(numPersone) {
     return Math.ceil(numPersone / CAPIENZA_TENDA);
 }
 
+//lista fissa che sostituisce il database
+const elencoStrade= {
+    "Al Rashid Street": "chiusa",
+    "Omar Mukhtar Street": "dissestata",
+    "Salah al-Din Road": "percorribile"
+};
+
+function calcolaStrade(nomeStrada) {
+    //recupera lo stato della strada dalla lista
+    return elencoStrade[nomeStrada];
+}
+
 function gestisciCalcoloAcqua() {
     const persone = Number(document.getElementById('numPersone').value);
     const giorni = Number(document.getElementById('numGiorni').value);
@@ -118,6 +130,37 @@ function gestisciCalcoloRifugi() {
         divRisultato.innerText = `Tende/Rifugi necessari: ${tendeNecessarie}`;
     }
     divRisultato.style.display = 'block';
+    }
+
+    function gestisciCalcoloStrade() {
+        const select = document.getElementById("nameStrade");
+        const stradaSelezionata = select.value;
+        const divRisultato = document.getElementById("risultatoStrade");
+
+        if (stradaSelezionata === "") {
+            divRisultato.style.display = "block";
+            divRisultato.innerHTML = "Selezionare una strada dal menù";
+            return;
+        }
+
+        //chiamo la funzione logica
+        const risultatoStato = calcolaStrade(stradaSelezionata);
+
+        //mostro il risultato nel DIV così
+        divRisultato.style.display = "block";
+
+        //personalizzo il messaggio in base alla risposta
+        if (risultatoStato === "percorribile") {
+            divRisultato.innerHTML = `La strada <strong>${stradaSelezionata}</strong> è libera e puoi passare`;
+        } else if (risultatoStato === "dissestata") {
+            divRisultato.innerHTML = `Attenzione: la strada <strong>${stradaSelezionata}</strong> è dissestata`;
+        } else if (risultatoStato === "chiusa") {
+            divRisultato.innerHTML = `Alt! La strada <strong>${stradaSelezionata}</strong> è completamente chiusa al traffico`;
+        } else {
+            //gestisce il caso in cui la strada scritta o selezionata non sia presente nella lista
+            divRisultato.innerHTML = `Errore: la strada <strong> ${stradaSelezionata}</strong> non è presente nei nostri sistemi`;
+        }
+
     }
 
     // --LOGICA MAPPA (MapLibre GL JS e OpenStreetMap) --

@@ -48,7 +48,7 @@ function calcolaRifugi(numPersone) {
 
 //lista fissa che sostituisce il database
 const elencoStrade= {
-    "Al Rashid Street": "chiusa",
+    "Al-Rashid Street": "chiusa",
     "Omar Mukhtar Street": "dissestata",
     "Salah al-Din Road": "percorribile"
 };

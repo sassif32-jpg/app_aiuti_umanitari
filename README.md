@@ -38,6 +38,12 @@ App-Aiuti-Umanitari/
 
 6. 🗺️ **Mappa Zone Operative:** Visualizzazione interattiva in tempo reale renderizzata in WebGL tramite **MapLibre GL JS** e OpenStreetMap per geolocalizzare i campi base, i punti di distribuzione e i presidi medici sul territorio.
 
+7. 🛣️ **Verifica Percorribilità Strade:** Modulo per il controllo in tempo reale dello stato delle vie d'accesso e delle arterie stradali nelle zone di operazione. Permette di selezionare una strada dal menu per verificarne la transitabilità:
+   * **Percorribile:** Strada libera e sicura per il transito dei convogli.
+   * **Dissestata:** Strada parzialmente agibile ma con criticità (richiede cautela).
+   * **Chiusa:** Strada completamente bloccata o inagibile.
+   * Gestione integrata degli errori per strade non censite nei sistemi.
+
 
 ## 🛠️ Tecnologie Utilizzate
 
